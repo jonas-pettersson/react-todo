@@ -24,6 +24,17 @@ class App extends Component {
     ]
   }
 
+  markComplete = (id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo;
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App" >
@@ -31,7 +42,7 @@ class App extends Component {
           <h1>TODOs</h1>
         </div>
         <ul className="w3-ul w3-hoverable">
-          <Todos todos={this.state.todos} />
+          <Todos todos={this.state.todos} markComplete={this.markComplete} />
         </ul>
       </div>
     );

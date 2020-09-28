@@ -5,34 +5,20 @@ import PropTypes from 'prop-types';
 
 export class TodoItem extends Component {
 
-    getCheckboxClass = () => {
-        if (this.props.todo.completed) {
-            return "fa fa-check-square w3-display-right w3-margin-right w3-large"
-        }
-        else {
-            return "far fa-square w3-display-right w3-margin-right w3-large"
-        }
-    }
-
     getTextStyle = () => {
-        if (this.props.todo.completed) {
-            return {
-                textDecoration: 'line-through'
-            }
-        }
-        else {
-            return {
-                textDecoration: 'none'
-            }
+        return {
+            textDecoration: this.props.todo.completed ? 'line-through' : 'none'
         }
     }
 
     render() {
+        const { id, title, completed } = this.props.todo;
         return (
             <li style={this.getTextStyle()} className="w3-display-container">
-                {this.props.todo.title}<i className={this.getCheckboxClass()}></i>
+                <input type="checkbox" className="w3-check" name="completed" id="completed"
+                    checked={completed} onChange={this.props.markComplete.bind(this, id)} />
+                <label className="w3-margin-left">{title}</label>
             </li>
-
         )
     }
 }
