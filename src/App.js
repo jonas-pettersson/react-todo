@@ -14,7 +14,7 @@ class App extends Component {
       {
         id: 2,
         title: 'Dinner with wife',
-        completed: false
+        completed: true
       },
       {
         id: 3,
@@ -30,9 +30,9 @@ class App extends Component {
         <div className="w3-container w3-teal">
           <h1>TODOs</h1>
         </div>
-        <div className="w3-container">
+        <ul className="w3-ul w3-hoverable">
           <Todos todos={this.state.todos} />
-        </div>
+        </ul>
       </div>
     );
   }

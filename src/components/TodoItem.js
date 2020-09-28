@@ -1,16 +1,45 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+
 
 export class TodoItem extends Component {
+
+    getCheckboxClass = () => {
+        if (this.props.todo.completed) {
+            return "fa fa-check-square w3-display-right w3-margin-right w3-large"
+        }
+        else {
+            return "far fa-square w3-display-right w3-margin-right w3-large"
+        }
+    }
+
+    getTextStyle = () => {
+        if (this.props.todo.completed) {
+            return {
+                textDecoration: 'line-through'
+            }
+        }
+        else {
+            return {
+                textDecoration: 'none'
+            }
+        }
+    }
+
     render() {
         return (
-            <ul className="w3-ul w3-hoverable w3-card">
-                <li className="w3-display-container">
-                    {this.props.todo.title}
-                    <span className="w3-button w3-transparent w3-display-right">&times;</span>
-                </li>
-            </ul>
+            <li style={this.getTextStyle()} className="w3-display-container">
+                {this.props.todo.title}<i className={this.getCheckboxClass()}></i>
+            </li>
+
         )
     }
+}
+
+// PropTypes
+TodoItem.propTypes = {
+    todo: PropTypes.object.isRequired
 }
 
 export default TodoItem
