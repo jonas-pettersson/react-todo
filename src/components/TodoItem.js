@@ -17,7 +17,10 @@ export class TodoItem extends Component {
             <li style={this.getTextStyle()} className="w3-display-container">
                 <input type="checkbox" className="w3-check" name="completed" id="completed"
                     checked={completed} onChange={this.props.markComplete.bind(this, id)} />
-                <label className="w3-margin-left">{title}</label>
+                <label className="w3-margin-left">{title}
+                    <span className="w3-button w3-transparent w3-display-right w3-large w3-hover-text-red"
+                        onClick={this.props.deleteTodo.bind(this, id)} >&times;</span>
+                </label>
             </li>
         )
     }
